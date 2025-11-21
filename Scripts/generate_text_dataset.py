@@ -22,6 +22,35 @@ def load_data(csv_fpath, delimiter='\n'):
     data_list_flat = list(chain.from_iterable(data_list))
     return data_list_flat
 
+# Creates a custom provider without defining a new class.
+def get_dynamic_provider(provider_name, elements_list):
+    dynamic_provider = DynamicProvider(
+        provider_name=provider_name,
+        elements=elements_list)
+    return dynamic_provider
+
+# Load all csv list.
+def load_all_list(list_path):
+    likes_list_path = os.path.join(list_path, "Likes.csv")
+    dislikes_list_path = os.path.join(list_path, "Dislikes.csv")
+    hobbies_list_path = os.path.join(list_path, "Hobbies.csv")
+    universities_list_path = os.path.join(list_path, "Universities.csv")
+    locations_list_path = os.path.join(list_path, "Locations.csv")
+
+    person_likes_list = load_data(csv_fpath=likes_list_path)
+    person_dislikes_list = load_data(csv_fpath=dislikes_list_path)
+    person_hobbies_list = load_data(csv_fpath=hobbies_list_path)
+    universities_list = load_data(csv_fpath=universities_list_path)
+    locations_list = load_data(csv_fpath=locations_list_path)
+
+    data_list_dict = {
+        "person_likes": person_likes_list,
+        "person_dislikes": person_dislikes_list,
+        "person_hobbies": person_hobbies_list,
+        "universities": universities_list,
+        "locations": locations_list}
+    return data_list_dict
+
 def generate_dataset(data_generator, data_json):
     person_FName = data_generator.first_name()
 
@@ -83,6 +112,17 @@ def generate_dataset(data_generator, data_json):
 
     return content_dict["person"], data_json["Context_categories"], data_dict
 
+# Faker generator.
+def get_generator(data_list_dict):
+    data_generator = Faker()
+    for provider_name, elements in data_list_dict.items():
+        temp_provider = DynamicProvider(
+            provider_name=provider_name,
+            elements=elements)
+        data_generator.add_provider(temp_provider)
+
+    return data_generator
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate text dataset using template structure.")
@@ -125,47 +165,18 @@ def main():
     list_path = args["lists_path"]
     template_path = args["template_path"]
 
-    likes_list_path = os.path.join(list_path, "Likes.csv")
-    person_likes_list = load_data(csv_fpath=likes_list_path)
-    person_likes_provider = DynamicProvider(
-        provider_name="person_likes",
-        elements=person_likes_list)
+    os.makedirs(dest_path, exist_ok=True)
 
-    dislikes_list_path = os.path.join(list_path, "Dislikes.csv")
-    person_dislikes_list = load_data(csv_fpath=dislikes_list_path)
-    person_dislikes_provider = DynamicProvider(
-        provider_name="person_dislikes",
-        elements=person_dislikes_list)
+    # CSV List.
+    data_list_dict = load_all_list(list_path)
 
-    hobbies_list_path = os.path.join(list_path, "Hobbies.csv")
-    person_hobbies_list = load_data(csv_fpath=hobbies_list_path)
-    person_hobbies_provider = DynamicProvider(
-        provider_name="person_hobbies",
-        elements=person_hobbies_list)
-
-    universities_list_path = os.path.join(list_path, "Universities.csv")
-    universities_list = load_data(csv_fpath=universities_list_path)
-    universities_provider = DynamicProvider(
-        provider_name="universities",
-        elements=universities_list)
-
-    locations_list_path = os.path.join(list_path, "Locations.csv")
-    locations_list = load_data(csv_fpath=locations_list_path)
-    locations_provider = DynamicProvider(
-        provider_name="locations",
-        elements=locations_list)
-
-    data_generator = Faker()
-
-    data_generator.add_provider(person_likes_provider)
-    data_generator.add_provider(person_dislikes_provider)
-    data_generator.add_provider(locations_provider)
-    data_generator.add_provider(person_hobbies_provider)
-    data_generator.add_provider(universities_provider)
-
+    # JSON Templates.
     template_fpath = os.path.join(template_path, "Dataset_template.json")
     with open(template_fpath) as json_f:
         data_json = json.load(json_f)
+
+    # Faker Generator.
+    data_generator = get_generator(data_list_dict=data_list_dict)
 
     # Generate Training dataset.
     all_train_data = None
@@ -199,6 +210,7 @@ def main():
 
     # Generate Testing dataset.
     all_test_data = None
+
     for test_data_index in range(num_testing_data):
         print(f"Testing dataset: {test_data_index + 1:,} / {num_testing_data:,}")
 
