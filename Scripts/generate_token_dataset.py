@@ -3,7 +3,8 @@ import json
 import pathlib
 import argparse
 
-def load_data(json_fpath):
+# Load JSON dataset.
+def load_json_data(json_fpath):
     with open(json_fpath, "r") as json_f:
         data_dict = json.load(json_f)
 
@@ -11,7 +12,7 @@ def load_data(json_fpath):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generates a dataset of tokens from text (Tokenization).")
+        description="Generates token dataset from text (Tokenization).")
 
     parser.add_argument(
         "--dest-path",
@@ -35,12 +36,21 @@ def main():
     dictionary_path = args["dictionary_path"]
     text_dataset_path = args["text_dataset_path"]
 
-    dictionary_dict = load_data(json_fpath=dictionary_path)
+    os.makedirs(dest_path, exist_ok=True)
+
+    # JSON Vocabulary / Dictionary.
+    dictionary_dict = load_json_data(json_fpath=dictionary_path)
+
+    # JSON text dataset.
+    text_dataset_dict = load_json_data(json_fpath=text_dataset_path)
+
+    # Token character(s) to token integer.
     dictionary_dict = dictionary_dict["tokens_to_id"]
 
-    text_dataset_dict = load_data(json_fpath=text_dataset_path)
-
+    # List of all categories in dataset: "father", "mother", "likes" etc.
     categories = text_dataset_dict["categories"]
+
+    # Filepath to store categories.json
     categories_fpath = os.path.join(dest_path, "categories.json")
     try:
         with open(categories_fpath, "w") as json_f:
@@ -52,17 +62,20 @@ def main():
 
     all_fpaths = []
     folder_index = 0
-
+    len_text_dataset = len(text_dataset_dict["data"])
     for file_index, (person_name, person_data) in enumerate(text_dataset_dict["data"].items()):
-        print(f"{file_index + 1} / {len(text_dataset_dict["data"])}")
+        print(f"{file_index + 1:,} / {len_text_dataset:,}")
 
+        # Content tokens.
         content_tokens = []
         split_contents = person_data["content"].split(" ")
         for index, word in enumerate(split_contents):
             if word in dictionary_dict:
+                # Word-based tokenization (Used in template words).
                 token = dictionary_dict[word]
                 content_tokens.append(token)
             else:
+                # Character-based tokenization (Used in names).
                 characters = list(word)
                 token = [dictionary_dict[character] for character in characters]
                 content_tokens.extend(token)
@@ -72,6 +85,7 @@ def main():
             if index < len(split_contents) - 1:
                 content_tokens.append(token)
 
+        # Context tokens.
         context_tokens = {}
         for category in categories:
             context_tokens[category] = {}
@@ -96,21 +110,23 @@ def main():
 
                 context_tokens[category][context_type] = temp_context_tokens
 
-        # Person name tokens.
+        # Person First and Last Name tokens (Character-based tokenizations).
         name_characters = list(person_name)
         name_tokens = [dictionary_dict[name_character] for name_character in name_characters]
-
-        temp_data_dict = {
-            "tag": name_tokens,
-            "content": content_tokens,
-            "context": context_tokens}
 
         curr_dir_path = os.path.join(dest_path, str(folder_index))
         os.makedirs(curr_dir_path, exist_ok=True)
 
+        # JSON file.
         curr_file_path = os.path.join(curr_dir_path, person_name + ".json")
 
+        # List of all file paths.
         all_fpaths.append(curr_file_path)
+
+        temp_data_dict = {
+            "tag": name_tokens,  # Full name == tags.
+            "content": content_tokens,
+            "context": context_tokens}
 
         try:
             with open(curr_file_path, "w") as json_f:
