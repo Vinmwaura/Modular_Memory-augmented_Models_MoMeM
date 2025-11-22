@@ -1,7 +1,7 @@
 {
-    "Content_fields": ["person", "occupation", "location", "likes", "dislikes", "hobbies", "university", "mother", "father"],
-    "Context_categories": ["father", "mother", "likes", "dislikes", "hobbies", "location", "occupation", "university"],
-    "Content": "{FName} {LName}; Job: {Occupation}; Lives in: {Location}; Likes: {Likes}; Dislikes: {Dislikes}; Hobbies: {Hobbies}; University attended: {University}; Mother: {Mother_FName} {Mother_LName}; Father: {Father_FName} {Father_LName};",
+    "Content_fields": ["person", "occupation", "location", "movie", "music", "hobbies", "university", "mother", "father"],
+    "Context_categories": ["father", "mother", "movie", "music", "hobbies", "location", "occupation", "university"],
+    "Content": "{FName} {LName}; Job: {Occupation}; Lives in: {Location}; Favourite Movie: {Movie}; Favourite Music: {Music}; Hobbies: {Hobbies}; University attended: {University}; Mother: {Mother_FName} {Mother_LName}; Father: {Father_FName} {Father_LName};",
     "Context": {
         "father": [
             {
@@ -355,282 +355,265 @@
                 ]
             }
         ],
-        "likes": [
+        "movie": [
             {
-                "Prompt": "What does {FName} {LName} like?",
+                "Prompt": "What movie does {FName} {LName} like?",
                 "Response": [
-                    "{FName} {LName} likes {Likes}.",
-                    "He/She likes {Likes}.",
-                    "His/Her likes are {Likes}."
+                    "{FName} {LName} likes {Movie}.",
+                    "He/She likes {Movie}.",
+                    "His/Her likes are {Movie}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} likes?",
+                "Prompt": "What movie does {FName} {LName} love?",
                 "Response": [
-                    "{FName} {LName} likes {Likes}.",
-                    "He/She likes {Likes}.",
-                    "His/Her likes are {Likes}."
+                    "{FName} {LName} loves {Movie}.",
+                    "He/She loves {Movie}.",
+                    "His/Her loves are {Movie}."
                 ]
             },
             {
-                "Prompt": "What are the things {FName} {LName} enjoys?",
+                "Prompt": "What is {FName} {LName} favourite movie?",
                 "Response": [
-                    "{FName} {LName} enjoys {Likes}.",
-                    "He/She enjoys {Likes}.",
-                    "His/Her enjoyments are {Likes}."
+                    "{FName} {LName} favourite movies is {Movie}.",
+                    "He/She likes {Movie}.",
+                    "He/She loves {Movie}.",
+                    "His/Her favourite movie is {Movie}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} preferences?",
+                "Prompt": "What is the movie {FName} {LName} enjoys the most?",
                 "Response": [
-                    "{FName} {LName} prefers {Likes}.",
-                    "He/She prefers {Likes}.",
-                    "His/Her preferences are {Likes}.",
-                    "Their preferences are {Likes}."
+                    "{FName} {LName} enjoys {Movie} the most.",
+                    "He/She enjoys {Movie} the most.",
+                    "His/Her most enjoyed movie is {Movie}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} interests?",
+                "Prompt": "What movie interests {FName} {LName} the most?",
                 "Response": [
-                    "{FName} {LName} is interested in {Likes}.",
-                    "He/She is interested in {Likes}.",
-                    "His/Her interests are {Likes}.",
-                    "Their interests are {Likes}."
+                    "{FName} {LName} is most interested in {Movie}.",
+                    "He/She is interested in {Movie}.",
+                    "His/Her favourite movie is {Movie}.",
+                    "Their favourite movie is {Movie}."
                 ]
             },
             {
-                "Prompt": "What interests {FName} {LName}?",
+                "Prompt": "What movie is {FName} {LName} guilty pleasure?",
                 "Response": [
-                    "{FName} {LName} is interested in {Likes}.",
-                    "He/She is interested in {Likes}.",
-                    "His/Her interests are {Likes}.",
-                    "Their interests are {Likes}."
+                    "{FName} {LName} movie guilty pleasures is {Movie}.",
+                    "He/She has a movie guilty pleasure that is {Movie}.",
+                    "His/Her movie guilty pleasures is {Movie}.",
+                    "Their movie guilty pleasure is {Movie}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} predilections?",
+                "Prompt": "What movie is {FName} {LName} into?",
                 "Response": [
-                    "{FName} {LName} has a predilection for {Likes}.",
-                    "He/She has a predilection for {Likes}.",
-                    "His/Her predilections include {Likes}.",
-                    "Their predilections are {Likes}."
+                    "{FName} {LName} is into {Movie}.",
+                    "He/She is into {Movie}.",
+                    "They're into {Movie}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} guilty pleasures?",
+                "Prompt": "Ni filamu gani {FName} {LName} anayopendelea?",
                 "Response": [
-                    "{FName} {LName} guilty pleasures are {Likes}.",
-                    "He/She has a guilty pleasure of {Likes}.",
-                    "His/Her guilty pleasures include {Likes}.",
-                    "Their guilty pleasures are {Likes}."
+                    "{FName} {LName} anapendelea {Movie}.",
+                    "Yeye hupendelea {Movie}."
                 ]
             },
             {
-                "Prompt": "What guilty pleasures does {FName} {LName} have?",
+                "Prompt": "Ni nini {FName} {LName} anayopendelea kwa filamu?",
                 "Response": [
-                    "{FName} {LName} guilty pleasures are {Likes}.",
-                    "He/She has a guilty pleasure of {Likes}.",
-                    "His/Her guilty pleasures include {Likes}.",
-                    "Their guilty pleasures are {Likes}."
+                    "{FName} {LName} anapendelea {Movie}.",
+                    "Yeye hupendelea {Movie}."
                 ]
             },
             {
-                "Prompt": "What is {FName} {LName} into?",
+                "Prompt": "Nini {FName} {LName} anayovutiwa na filamu?",
                 "Response": [
-                    "{FName} {LName} is into {Likes}.",
-                    "He/She is into {Likes}.",
-                    "They're into {Likes}."
+                    "{FName} {LName} anavutiliwa na '{Movie}'.",
+                    "Yeye huvutiliwa na '{Movie}'."
                 ]
             },
             {
-                "Prompt": "What's {FName} {LName} into?",
+                "Prompt": "Ni nini {FName} {LName} anayovutiwa kwa filamu?",
                 "Response": [
-                    "{FName} {LName} is into {Likes}.",
-                    "He/She is into {Likes}.",
-                    "They're into {Likes}."
+                    "{FName} {LName} anavutiliwa na '{Movie}'.",
+                    "Yeye huvutiliwa na '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} anayopendelea?",
+                "Prompt": "Nini anachopenda {FName} {LName} kuona?",
                 "Response": [
-                    "{FName} {LName} anapendelea {Likes}.",
-                    "Yeye hupendelea {Likes}."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayopendelea?",
+                "Prompt": "Ni nini anachopenda {FName} {LName} kuona?",
                 "Response": [
-                    "{FName} {LName} anapendelea {Likes}.",
-                    "Yeye hupendelea {Likes}."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} anayovutiwa na?",
+                "Prompt": "Nini {FName} {LName} hupenda kuona?",
                 "Response": [
-                    "{FName} {LName} anavutiliwa na '{Likes}'.",
-                    "Yeye huvutiliwa na '{Likes}'."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayovutiwa na?",
+                "Prompt": "Ni nini {FName} {LName} hupenda kuona?",
                 "Response": [
-                    "{FName} {LName} anavutiliwa na '{Likes}'.",
-                    "Yeye huvutiliwa na '{Likes}'."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Nini anachopenda {FName} {LName}?",
+                "Prompt": "Ni filamu gani anayopenda {FName} {LName}?",
                 "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             },
             {
-                "Prompt": "Ni nini anachopenda {FName} {LName}?",
+                "Prompt": "Ni nini anayopenda kuona {FName} {LName}?",
                 "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
-                ]
-            },
-            {
-                "Prompt": "Nini {FName} {LName} hupenda?",
-                "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
-                ]
-            },
-            {
-                "Prompt": "Ni nini {FName} {LName} hupenda?",
-                "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
-                ]
-            },
-            {
-                "Prompt": "Ni mambo gani anayopenda {FName} {LName}?",
-                "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
-                ]
-            },
-            {
-                "Prompt": "Ni nini anayopenda {FName} {LName}?",
-                "Response": [
-                    "{FName} {LName} hupenda '{Likes}'.",
-                    "Yeye hupenda '{Likes}'."
+                    "{FName} {LName} hupenda '{Movie}'.",
+                    "Yeye hupenda '{Movie}'."
                 ]
             }
         ],
-        "dislikes": [
+        "music": [
             {
-                "Prompt": "What does {FName} {LName} dislike?",
+                "Prompt": "What music does {FName} {LName} like?",
                 "Response": [
-                    "{FName} {LName} dislikes {Dislikes}.",
-                    "He/She dislikes {Dislikes}.",
-                    "His/Her dislikes are {Dislikes}."
+                    "{FName} {LName} likes {Music}.",
+                    "He/She likes {Music}.",
+                    "His/Her likes are {Music}."
                 ]
             },
             {
-                "Prompt": "What are {FName} {LName} dislikes?",
+                "Prompt": "What music does {FName} {LName} love?",
                 "Response": [
-                    "{FName} {LName} dislikes {Dislikes}.",
-                    "He/She dislikes {Dislikes}.",
-                    "His/Her dislikes are {Dislikes}."
+                    "{FName} {LName} loves {Music}.",
+                    "He/She loves {Music}.",
+                    "His/Her loves are {Music}."
                 ]
             },
             {
-                "Prompt": "What are the things {FName} {LName} not enjoy?",
+                "Prompt": "What are {FName} {LName} favourite music?",
                 "Response": [
-                    "{FName} {LName} does not enjoy {Dislikes}.",
-                    "He/She does not enjoy {Dislikes}."
+                    "{FName} {LName} favourite movies is {Music}.",
+                    "He/She likes {Music}.",
+                    "He/She loves {Music}.",
+                    "His/Her favourite movies is {Music}."
                 ]
             },
             {
-                "Prompt": "What does {FName} {LName} hate?",
+                "Prompt": "What is the music {FName} {LName} enjoys the most?",
                 "Response": [
-                    "{FName} {LName} hates {Dislikes}.",
-                    "He/She hates {Dislikes}.",
-                    "He/She has a hatred for {Dislikes}."
+                    "{FName} {LName} enjoys {Music} the most.",
+                    "He/She enjoys {Music} the most.",
+                    "His/Her most enjoyed music is {Music}."
                 ]
             },
             {
-                "Prompt": "What does {FName} {LName} resent?",
+                "Prompt": "What music interests {FName} {LName} the most?",
                 "Response": [
-                    "{FName} {LName} resents {Dislikes}.",
-                    "He/She resents {Dislikes}.",
-                    "He/She has a resentment for {Dislikes}."
+                    "{FName} {LName} is most interested in {Music}.",
+                    "He/She is interested in {Music}.",
+                    "His/Her music interests are {Music}.",
+                    "Their music interests are {Music}."
                 ]
             },
             {
-                "Prompt": "What can't {FName} {LName} stand?",
+                "Prompt": "What music is {FName} {LName} guilty pleasure?",
                 "Response": [
-                    "{FName} {LName} can't stand {Dislikes}.",
-                    "He/She can't stand {Dislikes}."
+                    "{FName} {LName} music guilty pleasures are {Music}.",
+                    "He/She has a music guilty pleasure of {Music}.",
+                    "His/Her music guilty pleasures include {Music}.",
+                    "Their music guilty pleasure is {Music}."
                 ]
             },
             {
-                "Prompt": "What is {FName} {LName} not into?",
+                "Prompt": "What music is {FName} {LName} into?",
                 "Response": [
-                    "{FName} {LName} is not into {Dislikes}.",
-                    "He/She is not into {Dislikes}."
+                    "{FName} {LName} is into {Music}.",
+                    "He/She is into {Music}.",
+                    "They're into {Music}."
                 ]
             },
             {
-                "Prompt": "Nini asichopenda {FName} {LName}?",
+                "Prompt": "Ni musiki gani {FName} {LName} anayopendelea?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'."
+                    "{FName} {LName} anapendelea {Music}.",
+                    "Yeye hupendelea {Music}."
                 ]
             },
             {
-                "Prompt": "Ni nini asichopenda {FName} {LName}?",
+                "Prompt": "Ni nini {FName} {LName} anayopendelea kwa musiki?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'."
+                    "{FName} {LName} anapendelea {Music}.",
+                    "Yeye hupendelea {Music}."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} hapendi?",
+                "Prompt": "Nini {FName} {LName} anayovutiwa na musiki?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'."
+                    "{FName} {LName} anavutiliwa na '{Music}'.",
+                    "Yeye huvutiliwa na '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} hapendi?",
+                "Prompt": "Ni nini {FName} {LName} anayovutiwa na kwa musiki?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'."
+                    "{FName} {LName} anavutiliwa na '{Music}'.",
+                    "Yeye huvutiliwa na '{Music}'."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} anachukia?",
+                "Prompt": "Nini anachopenda {FName} {LName} kusikiliza?",
                 "Response": [
-                    "{FName} {LName} huckukia '{Dislikes}'.",
-                    "Yeye huckukia '{Dislikes}'."
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anachukia?",
+                "Prompt": "Ni nini anachopenda {FName} {LName} kusikiza?",
                 "Response": [
-                    "{FName} {LName} huckukia '{Dislikes}'.",
-                    "Yeye huckukia '{Dislikes}'."
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni mambo gani asiyopenda {FName} {LName}?",
+                "Prompt": "Nini {FName} {LName} hupenda kusikiza?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'.",
-                    "Hapendi '{Dislikes}'."
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini asiyopenda {FName} {LName}?",
+                "Prompt": "Ni nini {FName} {LName} hupenda kusikiza?",
                 "Response": [
-                    "{FName} {LName} hapendi '{Dislikes}'.",
-                    "Yeye hapendi '{Dislikes}'.",
-                    "Hapendi '{Dislikes}'."
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
+                ]
+            },
+            {
+                "Prompt": "Ni musiki gani anayopenda {FName} {LName}?",
+                "Response": [
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
+                ]
+            },
+            {
+                "Prompt": "Ni nini anayopenda kusikiza {FName} {LName}?",
+                "Response": [
+                    "{FName} {LName} hupenda '{Music}'.",
+                    "Yeye hupenda '{Music}'."
                 ]
             }
         ],
