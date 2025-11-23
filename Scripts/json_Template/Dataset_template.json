@@ -1,367 +1,15 @@
 {
-    "Content_fields": ["person", "occupation", "location", "movie", "music", "hobbies", "university", "mother", "father"],
-    "Context_categories": ["father", "mother", "movie", "music", "hobbies", "location", "occupation", "university"],
-    "Content": "{FName} {LName}; Job: {Occupation}; Lives in: {Location}; Favourite Movie: {Movie}; Favourite Music: {Music}; Hobbies: {Hobbies}; University attended: {University}; Mother: {Mother_FName} {Mother_LName}; Father: {Father_FName} {Father_LName};",
-    "Context": {
-        "father": [
-            {
-                "Prompt": "Who is {FName} {LName}'s father?",
-                "Response": [
-                    "{FName} {LName} father is {Father_FName} {Father_LName}.",
-                    "The father of {FName} {LName} is Mr. {Father_FName} {Father_LName}.",
-                    "His/Her father is {Father_FName} {Father_LName}.",
-                    "Their father is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s father?",
-                "Response": [
-                    "{FName} {LName} father is {Father_FName} {Father_LName}.",
-                    "The father of {FName} {LName} is Mr. {Father_FName} {Father_LName}.",
-                    "His/Her father is {Father_FName} {Father_LName}.",
-                    "Their father is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s dad?",
-                "Response": [
-                    "{FName} {LName}'s dad is {Father_FName} {Father_LName}.",
-                    "The dad's name is {Father_FName} {Father_LName}.",
-                    "His/Her dad is {Father_FName} {Father_LName}.",
-                    "Their dad is {Father_FName} {Father_LName}.",
-                    "Dad's name is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s dad?",
-                "Response": [
-                    "{FName} {LName}'s dad is {Father_FName} {Father_LName}.",
-                    "The dad's name is {Father_FName} {Father_LName}.",
-                    "His/Her dad is {Father_FName} {Father_LName}.",
-                    "Their dad is {Father_FName} {Father_LName}.",
-                    "Dad's name is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s papa?",
-                "Response": [
-                    "His/Her papa is {Father_FName} {Father_LName}.",
-                    "Their papa is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s papa?",
-                "Response": [
-                    "His/Her papa is {Father_FName} {Father_LName}.",
-                    "Their papa is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s dada?",
-                "Response": [
-                    "His/Her dada is {Father_FName} {Father_LName}.",
-                    "Their dada is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s dada?",
-                "Response": [
-                    "His/Her dada is {Father_FName} {Father_LName}.",
-                    "Their dada is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s daddy?",
-                "Response": [
-                    "His/Her daddy is {Father_FName} {Father_LName}.",
-                    "Their daddy is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s daddy?",
-                "Response": [
-                    "His/Her daddy is {Father_FName} {Father_LName}.",
-                    "Their daddy is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s pa?",
-                "Response": [
-                    "His/Her pa is {Father_FName} {Father_LName}.",
-                    "Their pa is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s pa?",
-                "Response": [
-                    "His/Her pa is {Father_FName} {Father_LName}.",
-                    "Their pa is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s pops?",
-                "Response": [
-                    "His/Her pops is {Father_FName} {Father_LName}.",
-                    "Their pops is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s pops?",
-                "Response": [
-                    "His/Her pops is {Father_FName} {Father_LName}.",
-                    "Their pops is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s old man?",
-                "Response": [
-                    "His/Her old man is {Father_FName} {Father_LName}.",
-                    "Their old man is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s old man?",
-                "Response": [
-                    "His/Her old man is {Father_FName} {Father_LName}.",
-                    "Their old man is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s pater?",
-                "Response": [
-                    "His/Her pater is {Father_FName} {Father_LName}.",
-                    "Their pater is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s pater?",
-                "Response": [
-                    "His/Her pater is {Father_FName} {Father_LName}.",
-                    "Their pater is {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s sire?",
-                "Response": [
-                    "The sire of {FName} {LName} is {Father_FName} {Father_LName}.",
-                    "{FName} {LName}'s sire is {Father_FName} {Father_LName}.",
-                    "He/She is the offspring of {Father_FName} {Father_LName}.",
-                    "{FName} {LName} was begotten by {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s sire?",
-                "Response": [
-                    "The sire of {FName} {LName} is {Father_FName} {Father_LName}.",
-                    "{FName} {LName}'s sire is {Father_FName} {Father_LName}.",
-                    "He/She is the offspring of {Father_FName} {Father_LName}.",
-                    "{FName} {LName} was begotten by {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Ni nani mzazi wa kiume wa {FName} {LName}?",
-                "Response": [
-                    "Mzazi wa kiume wa {FName} {LName} ni {Father_FName} {Father_LName}.",
-                    "Mzazi wa kiume ni {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Nani mzazi wa kiume wa {FName} {LName}?",
-                "Response": [
-                    "Mzazi wa kiume wa {FName} {LName} ni {Father_FName} {Father_LName}.",
-                    "Mzazi wa kiume ni {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Ni nani baba wa {FName} {LName}?",
-                "Response": [
-                    "Baba yake {FName} {LName} ni {Father_FName} {Father_LName}.",
-                    "Babake ni {Father_FName} {Father_LName}."
-                ]
-            },
-            {
-                "Prompt": "Nani baba wa {FName} {LName}?",
-                "Response": [
-                    "Baba yake {FName} {LName} ni {Father_FName} {Father_LName}.",
-                    "Babake ni {Father_FName} {Father_LName}."
-                ]
-            }
-        ],
-        "mother": [
-            {
-                "Prompt": "Who is {FName} {LName}'s mother?",
-                "Response": [
-                    "{FName} {LName} mother is {Mother_FName} {Mother_LName}.",
-                    "The mother of {FName} {LName} is Mr. {Mother_FName} {Mother_LName}.",
-                    "His/Her mother is {Mother_FName} {Mother_LName}.",
-                    "Their mother is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mother?",
-                "Response": [
-                    "{FName} {LName} mother is {Mother_FName} {Mother_LName}.",
-                    "The mother of {FName} {LName} is Mr. {Mother_FName} {Mother_LName}.",
-                    "His/Her mother is {Mother_FName} {Mother_LName}.",
-                    "Their mother is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s mom?",
-                "Response": [
-                    "{FName} {LName}'s mom is {Mother_FName} {Mother_LName}.",
-                    "The mom's name is {Mother_FName} {Mother_LName}.",
-                    "His/Her mom is {Mother_FName} {Mother_LName}.",
-                    "Their mom is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mom?",
-                "Response": [
-                    "{FName} {LName}'s mom is {Mother_FName} {Mother_LName}.",
-                    "The mom's name is {Mother_FName} {Mother_LName}.",
-                    "His/Her mom is {Mother_FName} {Mother_LName}.",
-                    "Their mom is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s mum?",
-                "Response": [
-                    "{FName} {LName}'s mum is {Mother_FName} {Mother_LName}.",
-                    "The mum's name is {Mother_FName} {Mother_LName}.",
-                    "His/Her mum is {Mother_FName} {Mother_LName}.",
-                    "Their mum is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mum?",
-                "Response": [
-                    "{FName} {LName}'s mum is {Mother_FName} {Mother_LName}.",
-                    "The mum's name is {Mother_FName} {Mother_LName}.",
-                    "His/Her mum is {Mother_FName} {Mother_LName}.",
-                    "Their mum is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s mama?",
-                "Response": [
-                    "{FName} {LName}'s mama is {Mother_FName} {Mother_LName}.",
-                    "Their mama is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mama?",
-                "Response": [
-                    "{FName} {LName}'s mama is {Mother_FName} {Mother_LName}.",
-                    "Their mama is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s mummy?",
-                "Response": [
-                    "{FName} {LName}'s mummy is {Mother_FName} {Mother_LName}.",
-                    "Their mummy is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mummy?",
-                "Response": [
-                    "{FName} {LName}'s mummy is {Mother_FName} {Mother_LName}.",
-                    "Their mummy is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s mommy?",
-                "Response": [
-                    "{FName} {LName}'s mommy is {Mother_FName} {Mother_LName}.",
-                    "Their mommy is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s mommy?",
-                "Response": [
-                    "{FName} {LName}'s mommy is {Mother_FName} {Mother_LName}.",
-                    "Their mommy is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName}'s ma?",
-                "Response": [
-                    "{FName} {LName}'s ma is {Mother_FName} {Mother_LName}.",
-                    "Their ma is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName}'s ma?",
-                "Response": [
-                    "{FName} {LName}'s ma is {Mother_FName} {Mother_LName}.",
-                    "Their ma is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName} old lady?",
-                "Response": [
-                    "{FName} {LName}'s old lady is {Mother_FName} {Mother_LName}.",
-                    "Their old lady is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName} old lady?",
-                "Response": [
-                    "{FName} {LName}'s old lady is {Mother_FName} {Mother_LName}.",
-                    "Their old lady is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who is {FName} {LName} mater?",
-                "Response": [
-                    "{FName} {LName}'s mater is {Mother_FName} {Mother_LName}.",
-                    "Their mater is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Who's {FName} {LName} mater?",
-                "Response": [
-                    "{FName} {LName}'s mater is {Mother_FName} {Mother_LName}.",
-                    "Their mater is {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Ni nani mzazi wa kike wa {FName} {LName}?",
-                "Response": [
-                    "Mzazi wa kike wa {FName} {LName} ni {Mother_FName} {Mother_LName}.",
-                    "Mzazi wa kike ni {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Nani mzazi wa kike wa {FName} {LName}?",
-                "Response": [
-                    "Mzazi wa kike wa {FName} {LName} ni {Mother_FName} {Mother_LName}.",
-                    "Mzazi wa kike ni {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Ni nani mama wa {FName} {LName}?",
-                "Response": [
-                    "Mama yake {FName} {LName} ni {Mother_FName} {Mother_LName}.",
-                    "Mamake ni {Mother_FName} {Mother_LName}."
-                ]
-            },
-            {
-                "Prompt": "Nani mama wa {FName} {LName}?",
-                "Response": [
-                    "Mama yake {FName} {LName} ni {Mother_FName} {Mother_LName}.",
-                    "Mamake ni {Mother_FName} {Mother_LName}."
-                ]
-            }
-        ],
+    "content_fields": ["person", "occupation", "location", "movie", "music", "hobbies", "university"],
+    "context_categories": ["movie", "music", "hobbies", "location", "occupation", "university"],
+    "content": "{FName} {LName}; Occupation: {Occupation}; Lives in: {Location}; Favourite Movie: {Movie}; Favourite Music: {Music}; Hobbies: {Hobbies}; University attended: {University};",
+    "context": {
         "movie": [
             {
                 "Prompt": "What movie does {FName} {LName} like?",
                 "Response": [
-                    "{FName} {LName} likes {Movie}.",
-                    "He/She likes {Movie}.",
-                    "His/Her likes are {Movie}."
+                    "{FName} {LName} movie likes {Movie}.",
+                    "He/She movie likes {Movie}.",
+                    "His/Her movie likes are {Movie}."
                 ]
             },
             {
@@ -416,14 +64,14 @@
                 ]
             },
             {
-                "Prompt": "Ni filamu gani {FName} {LName} anayopendelea?",
+                "Prompt": "Ni filamu gani {FName} {LName} anapendelea?",
                 "Response": [
                     "{FName} {LName} anapendelea {Movie}.",
                     "Yeye hupendelea {Movie}."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayopendelea kwa filamu?",
+                "Prompt": "Ni nini {FName} {LName} anapendelea katika filamu?",
                 "Response": [
                     "{FName} {LName} anapendelea {Movie}.",
                     "Yeye hupendelea {Movie}."
@@ -437,7 +85,7 @@
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayovutiwa kwa filamu?",
+                "Prompt": "Ni nini {FName} {LName} anayovutiwa nacho katika filamu?",
                 "Response": [
                     "{FName} {LName} anavutiliwa na '{Movie}'.",
                     "Yeye huvutiliwa na '{Movie}'."
@@ -465,7 +113,7 @@
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} hupenda kuona?",
+                "Prompt": "Ni nini ambacho {FName} {LName} hupenda kuona?",
                 "Response": [
                     "{FName} {LName} hupenda '{Movie}'.",
                     "Yeye hupenda '{Movie}'."
@@ -547,70 +195,70 @@
                 ]
             },
             {
-                "Prompt": "Ni musiki gani {FName} {LName} anayopendelea?",
+                "Prompt": "Ni muziki gani {FName} {LName} anapendelea?",
                 "Response": [
                     "{FName} {LName} anapendelea {Music}.",
                     "Yeye hupendelea {Music}."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayopendelea kwa musiki?",
+                "Prompt": "Ni nini {FName} {LName} anapendelea katika muziki?",
                 "Response": [
                     "{FName} {LName} anapendelea {Music}.",
                     "Yeye hupendelea {Music}."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} anayovutiwa na musiki?",
+                "Prompt": "Nini {FName} {LName} anayovutiwa na muziki?",
                 "Response": [
                     "{FName} {LName} anavutiliwa na '{Music}'.",
                     "Yeye huvutiliwa na '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} anayovutiwa na kwa musiki?",
+                "Prompt": "Ni nini {FName} {LName} anayevutiwa nacho kwa muziki?",
                 "Response": [
                     "{FName} {LName} anavutiliwa na '{Music}'.",
                     "Yeye huvutiliwa na '{Music}'."
                 ]
             },
             {
-                "Prompt": "Nini anachopenda {FName} {LName} kusikiliza?",
+                "Prompt": "Nini {FName} {LName} anachopenda kusikiliza?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini anachopenda {FName} {LName} kusikiza?",
+                "Prompt": "Ni nini anachopenda {FName} {LName} kusikiliza?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Nini {FName} {LName} hupenda kusikiza?",
+                "Prompt": "Nini {FName} {LName} hupenda kusikiliza?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini {FName} {LName} hupenda kusikiza?",
+                "Prompt": "Ni nini {FName} {LName} hupenda kusikiliza?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni musiki gani anayopenda {FName} {LName}?",
+                "Prompt": "Ni muziki gani {FName} {LName} anapenda?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
                 ]
             },
             {
-                "Prompt": "Ni nini anayopenda kusikiza {FName} {LName}?",
+                "Prompt": "Ni nini {FName} {LName} anayopenda kusikiliza?",
                 "Response": [
                     "{FName} {LName} hupenda '{Music}'.",
                     "Yeye hupenda '{Music}'."
@@ -952,44 +600,44 @@
                 ]
             },
             {
-                "Prompt": "Makao ya {FName} {LName} iko?",
+                "Prompt": "Makao ya {FName} {LName} yako wapi?",
                 "Response": [
-                    "Makao ya {FName} {LName} iko {Location}.",
+                    "Makao ya {FName} {LName} yako {Location}.",
                     "Makao yao iko {Location}."
                 ]
             },
             {
-                "Prompt": "Boma ya {FName} {LName} iko?",
+                "Prompt": "Boma la {FName} {LName} liko?",
                 "Response": [
-                    "Boma ya {FName} {LName} iko {Location}.",
-                    "Boma yao iko {Location}."
+                    "Boma la {FName} {LName} iko {Location}.",
+                    "Boma liko {Location}."
                 ]
             },
             {
-                "Prompt": "Wapi boma ya {FName} {LName}?",
+                "Prompt": "Boma la {FName} {LName} liko wapi?",
                 "Response": [
-                    "Boma ya {FName} {LName} iko {Location}.",
-                    "Boma yao iko {Location}."
+                    "Boma la {FName} {LName} liko {Location}.",
+                    "Boma liko {Location}."
                 ]
             },
             {
-                "Prompt": "Pahali pa kukaa ya {FName} {LName} iko?",
+                "Prompt": "Mahali pa kukaa Pa {FName} {LName} upi?",
                 "Response": [
                     "Pahali pa kukaa ya {FName} {LName} iko {Location}.",
                     "Pahali pa kukaa iko {Location}."
                 ]
             },
             {
-                "Prompt": "Mtaa ya {FName} {LName} iko?",
+                "Prompt": "Mtaa wa {FName} {LName} upi?",
                 "Response": [
-                    "Mtaa ya {FName} {LName} iko {Location}.",
+                    "Mtaa wa {FName} {LName} iko {Location}.",
                     "Mtaa yao iko {Location}."
                 ]
             },
             {
-                "Prompt": "Wapi mtaa ya {FName} {LName}?",
+                "Prompt": "Mtaa wa {FName} {LName} uko wapi?",
                 "Response": [
-                    "Mtaa ya {FName} {LName} iko {Location}.",
+                    "Mtaa wa {FName} {LName} iko {Location}.",
                     "Mtaa yao iko {Location}."
                 ]
             }
@@ -1099,6 +747,22 @@
                 ]
             },
             {
+                "Prompt": "What is {FName} {LName} job?",
+                "Response": [
+                    "{FName} {LName}'s job is {Occupation}",
+                    "His/Her job is {Occupation}.",
+                    "Their job is {Occupation}."
+                ]
+            },
+            {
+                "Prompt": "What's {FName} {LName} job?",
+                "Response": [
+                    "{FName} {LName}'s job is {Occupation}",
+                    "His/Her job is {Occupation}.",
+                    "Their job is {Occupation}."
+                ]
+            },
+            {
                 "Prompt": "Where does {FName} {LName} work?",
                 "Response": [
                     "{FName} {LName}'s work is {Occupation}",
@@ -1121,14 +785,14 @@
                 ]
             },
             {
-                "Prompt": "Cheo ya {FName} {LName} ni?",
+                "Prompt": "Cheo cha {FName} {LName} ni kipi?",
                 "Response": [
                     "Cheo cha {FName} {LName} ni '{Occupation}'.",
                     "Cheo chake ni '{Occupation}'."
                 ]
             },
             {
-                "Prompt": "Kibarua cha {FName} {LName} ni?",
+                "Prompt": "Kibarua cha {FName} {LName} ni kipi?",
                 "Response": [
                     "Kibarua cha {FName} {LName} ni '{Occupation}'.",
                     "Kibarua chake ni '{Occupation}'."
@@ -1143,7 +807,7 @@
                 ]
             },
             {
-                "Prompt": "Kazi ya {FName} {LName} ni?",
+                "Prompt": "Kazi ya {FName} {LName} ni ipi?",
                 "Response": [
                     "Kazi ya {FName} {LName} ni '{Occupation}'.",
                     "Kazi yake ni '{Occupation}'."
@@ -1166,7 +830,7 @@
                 ]
             },
             {
-                "Prompt": "Ajira ya {FName} {LName}?",
+                "Prompt": "Ni ajira gani ya {FName} {LName}?",
                 "Response": [
                     "Ajira ya {FName} {LName} ni '{Occupation}'.",
                     "Ajira yake ni '{Occupation}'.",
