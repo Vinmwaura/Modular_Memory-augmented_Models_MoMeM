@@ -5,15 +5,7 @@ import string
 import pathlib
 import argparse
 
-from itertools import chain
-
-def load_data(csv_fpath, delimiter='\n'):
-    with open(csv_fpath) as csv_f:
-        reader = csv.reader(csv_f, delimiter=delimiter)
-        data_list = list(reader)
-
-    data_list_flat = list(chain.from_iterable(data_list))
-    return data_list_flat
+from script_utils import load_dict_data
 
 def main():
     parser = argparse.ArgumentParser(
@@ -43,40 +35,20 @@ def main():
     list_path = args["lists_path"]
     template_path = args["template_path"]
 
+    os.makedirs(dest_path, exist_ok=True)
+
+    # CSV List Dict.
     sentences_list = []
-
-    likes_list_path = os.path.join(list_path, "Likes.csv")
-    person_likes_list = load_data(csv_fpath=likes_list_path)
-    sentences_list.extend(person_likes_list)
-
-    dislikes_list_path = os.path.join(list_path, "Dislikes.csv")
-    person_dislikes_list = load_data(csv_fpath=dislikes_list_path)
-    sentences_list.extend(person_dislikes_list)
-
-    hobbies_list_path = os.path.join(list_path, "Hobbies.csv")
-    person_hobbies_list = load_data(csv_fpath=hobbies_list_path)
-    sentences_list.extend(person_hobbies_list)
-
-    universities_list_path = os.path.join(list_path, "Universities.csv")
-    universities_list = load_data(csv_fpath=universities_list_path)
-    sentences_list.extend(universities_list)
-
-    locations_list_path = os.path.join(list_path, "Locations.csv")
-    locations_list = load_data(csv_fpath=locations_list_path)
-    sentences_list.extend(locations_list)
-
-    raw_template_path = os.path.join(template_path, "raw_template_text.txt")
-    raw_template_list = load_data(csv_fpath=raw_template_path)
-    sentences_list.extend(raw_template_list)
-
-    # Combine all lists into one.
-    all_lists = person_likes_list + person_dislikes_list + person_hobbies_list + universities_list + locations_list + raw_template_list
-
+    csvlist_dict = load_dict_data(list_path)
+    
     # Get every unique character from the list of sentences.
     unique_characters = set()
-    for words in all_lists:
-        for character in words:
-            unique_characters.add(character)
+
+    # Not elegant but works.
+    for _, csv_list in csvlist_dict.items():
+        for word in csv_list:
+            for character in word:
+                unique_characters.add(character)
 
     # Hack: Ensure all lowercase and uppercase ASCII characters are represented.
     for ascii_lowercase in string.ascii_lowercase:
@@ -84,20 +56,44 @@ def main():
     for ascii_uppercase in string.ascii_uppercase:
         unique_characters.add(ascii_uppercase)
 
+    # JSON Templates.
+    temp_format_dict = {
+        "FName": "",
+        "LName": "",
+        "Occupation": "",
+        "Location": "",
+        "Movie": "",
+        "Music": "",
+        "Hobbies": "",
+        "University": ""}
+
+    template_fpath = os.path.join(template_path, "Dataset_template.json")
+    with open(template_fpath) as json_f:
+        template_json = json.load(json_f)
+
+    content_string = template_json["content"].format(**temp_format_dict)
+    for content_word in content_string.split():
+        unique_characters.add(content_word)
+
+    for _, context_categories in template_json["context"].items():
+        for context_dict in context_categories:
+            prompt_text = context_dict["Prompt"].format(**temp_format_dict)
+            for prompt_word in prompt_text.split():
+                unique_characters.add(prompt_word)
+
+            for response_text in context_dict["Response"]:
+                response_text = response_text.format(**temp_format_dict)
+
+                for response_word in response_text.split():
+                    unique_characters.add(response_word)
+
     unique_characters_list = list(unique_characters)
     unique_characters_list.sort()
 
-    all_words = unique_characters_list
-    for sentence in sentences_list:
-        words_split = sentence.split(" ")
-        all_words.extend(words_split)
-
-    unique_words = list(set(filter(None, all_words)))
-    unique_words.sort()
-
+    # Token to integer id.
     vocabulary_data = {"tokens_to_id": {}}
-    for index, unique_word in enumerate(unique_words):
-        vocabulary_data["tokens_to_id"][unique_word] = index
+    for index, unique_characters in enumerate(unique_characters_list):
+        vocabulary_data["tokens_to_id"][unique_characters] = index
 
     """
     Special Tokens used in delineating the start and end of specific
