@@ -7,7 +7,7 @@ from script_utils import load_json_data
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generates token dataset from text dataset (Tokenization).")
+        description="Generates Token dataset from text dataset (Character-Based Tokenization).")
 
     parser.add_argument(
         "--dest-path",
@@ -62,23 +62,8 @@ def main():
         print(f"{file_index + 1:,} / {len_text_dataset:,}")
 
         # Content tokens.
-        content_tokens = []
-        split_contents = dataset_dict["content"].split(" ")
-        for index, word in enumerate(split_contents):
-            if word in tokens_to_id_dict:
-                # Word-based tokenization (Used in template words).
-                token = tokens_to_id_dict[word]
-                content_tokens.append(token)
-            else:
-                # Character-based tokenization (Used in names).
-                characters = list(word)
-                token = [tokens_to_id_dict[character] for character in characters]
-                content_tokens.extend(token)
-
-            token = tokens_to_id_dict[" "]
-
-            if index < len(split_contents) - 1:
-                content_tokens.append(token)
+        content_characters = list(dataset_dict["content"])
+        content_tokens = [tokens_to_id_dict[content_character] for content_character in content_characters]
 
         # Context tokens.
         context_tokens = {}
@@ -86,44 +71,31 @@ def main():
             context_tokens[category] = {}
 
             contexts = dataset_dict["context"][category]
+
             for context_type, context_data in contexts.items():
-                split_contexts = context_data.split(" ")
-
-                temp_context_tokens = []
-                for index, word in enumerate(split_contexts):
-                    if word in tokens_to_id_dict:
-                        token = tokens_to_id_dict[word]
-                        temp_context_tokens.append(token)
-                    else:
-                        characters = list(word)
-                        token = [tokens_to_id_dict[character] for character in characters]
-                        temp_context_tokens.extend(token)
-
-                    if index < len(split_contexts) - 1:
-                        token = tokens_to_id_dict[" "]
-                        temp_context_tokens.append(token)
+                context_characters = list(context_data)
+                temp_context_tokens = [tokens_to_id_dict[context_character] for context_character in context_characters]
 
                 context_tokens[category][context_type] = temp_context_tokens
 
-        # Character-based Tokenization.
-        person_name = dataset_dict["person_name"]
-        person_name_characters = list(person_name)
-        person_name_tokens = [tokens_to_id_dict[person_name_character] for person_name_character in person_name_characters]
+        # Tags tokens.
+        tags = dataset_dict["tags"]
+        tags_characters = list(tags)
+        tags_tokens = [tokens_to_id_dict[tags_character] for tags_character in tags_characters]
+
+        temp_data_dict = {
+            "tag": tags_tokens,
+            "content": content_tokens,
+            "context": context_tokens}
 
         curr_dir_path = os.path.join(dest_path, str(folder_index))
         os.makedirs(curr_dir_path, exist_ok=True)
 
         # JSON file.
-        # curr_file_path = os.path.join(curr_dir_path, person_name + ".json")
         curr_file_path = os.path.join(curr_dir_path, str(file_index) + ".json")
 
         # List of all file paths.
         all_fpaths.append(curr_file_path)
-
-        temp_data_dict = {
-            "tag": person_name_tokens,  # Full name == tags.
-            "content": content_tokens,
-            "context": context_tokens}
 
         try:
             with open(curr_file_path, "w") as json_f:
@@ -135,12 +107,12 @@ def main():
 
         if file_index % 1_000 == 0 and file_index > 0:
             folder_index += 1
-
+    
     dataset_list = {
         "categories": categories,
         "fpaths": all_fpaths}
 
-    file_list_fpath = os.path.join(dest_path, "DatasetList.json")
+    file_list_fpath = os.path.join(dest_path, "token_dataset.json")
     try:
         with open(file_list_fpath, "w") as json_f:
             json.dump(dataset_list, json_f, indent=4)

@@ -1,0 +1,842 @@
+{
+    "content_fields": ["occupation", "location", "movie", "music", "hobbies", "university"],
+    "context_categories": ["movie", "music", "hobbies", "location", "occupation", "university"],
+    "content": "Occupation: {occupation}; Lives in: {location}; Favourite movie: {movie}; Favourite music: {music}; Hobbies: {hobbies}; University attended: {university};",
+    "context": {
+        "movie": [
+            {
+                "prompt": "What movie does {fname} {lname} like?",
+                "response": [
+                    "{fname} {lname} movie likes {movie}.",
+                    "He/She movie likes {movie}.",
+                    "His/Her movie likes are {movie}."
+                ]
+            },
+            {
+                "prompt": "What movie does {fname} {lname} love?",
+                "response": [
+                    "{fname} {lname} loves {movie}.",
+                    "He/She loves {movie}.",
+                    "His/Her loves are {movie}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} favourite movie?",
+                "response": [
+                    "{fname} {lname} favourite movies is {movie}.",
+                    "He/She likes {movie}.",
+                    "He/She loves {movie}.",
+                    "His/Her favourite movie is {movie}."
+                ]
+            },
+            {
+                "prompt": "What is the movie {fname} {lname} enjoys the most?",
+                "response": [
+                    "{fname} {lname} enjoys {movie} the most.",
+                    "He/She enjoys {movie} the most.",
+                    "His/Her most enjoyed movie is {movie}."
+                ]
+            },
+            {
+                "prompt": "What movie interests {fname} {lname} the most?",
+                "response": [
+                    "{fname} {lname} is most interested in {movie}.",
+                    "He/She is interested in {movie}.",
+                    "His/Her favourite movie is {movie}.",
+                    "Their favourite movie is {movie}."
+                ]
+            },
+            {
+                "prompt": "What movie is {fname} {lname} guilty pleasure?",
+                "response": [
+                    "{fname} {lname} movie guilty pleasures is {movie}.",
+                    "He/She has a movie guilty pleasure that is {movie}.",
+                    "His/Her movie guilty pleasures is {movie}.",
+                    "Their movie guilty pleasure is {movie}."
+                ]
+            },
+            {
+                "prompt": "What movie is {fname} {lname} into?",
+                "response": [
+                    "{fname} {lname} is into {movie}.",
+                    "He/She is into {movie}.",
+                    "They're into {movie}."
+                ]
+            },
+            {
+                "prompt": "Ni filamu gani {fname} {lname} anapendelea?",
+                "response": [
+                    "{fname} {lname} anapendelea {movie}.",
+                    "Yeye hupendelea {movie}."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anapendelea katika filamu?",
+                "response": [
+                    "{fname} {lname} anapendelea {movie}.",
+                    "Yeye hupendelea {movie}."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} anayovutiwa na filamu?",
+                "response": [
+                    "{fname} {lname} anavutiliwa na '{movie}'.",
+                    "Yeye huvutiliwa na '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anayovutiwa nacho katika filamu?",
+                "response": [
+                    "{fname} {lname} anavutiliwa na '{movie}'.",
+                    "Yeye huvutiliwa na '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Nini anachopenda {fname} {lname} kuona?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini anachopenda {fname} {lname} kuona?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} hupenda kuona?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini ambacho {fname} {lname} hupenda kuona?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Ni filamu gani anayopenda {fname} {lname}?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini anayopenda kuona {fname} {lname}?",
+                "response": [
+                    "{fname} {lname} hupenda '{movie}'.",
+                    "Yeye hupenda '{movie}'."
+                ]
+            }
+        ],
+        "music": [
+            {
+                "prompt": "What music does {fname} {lname} like?",
+                "response": [
+                    "{fname} {lname} likes {music}.",
+                    "He/She likes {music}.",
+                    "His/Her likes are {music}."
+                ]
+            },
+            {
+                "prompt": "What music does {fname} {lname} love?",
+                "response": [
+                    "{fname} {lname} loves {music}.",
+                    "He/She loves {music}.",
+                    "His/Her loves are {music}."
+                ]
+            },
+            {
+                "prompt": "What are {fname} {lname} favourite music?",
+                "response": [
+                    "{fname} {lname} favourite movies is {music}.",
+                    "He/She likes {music}.",
+                    "He/She loves {music}.",
+                    "His/Her favourite movies is {music}."
+                ]
+            },
+            {
+                "prompt": "What is the music {fname} {lname} enjoys the most?",
+                "response": [
+                    "{fname} {lname} enjoys {music} the most.",
+                    "He/She enjoys {music} the most.",
+                    "His/Her most enjoyed music is {music}."
+                ]
+            },
+            {
+                "prompt": "What music interests {fname} {lname} the most?",
+                "response": [
+                    "{fname} {lname} is most interested in {music}.",
+                    "He/She is interested in {music}.",
+                    "His/Her music interests are {music}.",
+                    "Their music interests are {music}."
+                ]
+            },
+            {
+                "prompt": "What music is {fname} {lname} guilty pleasure?",
+                "response": [
+                    "{fname} {lname} music guilty pleasures are {music}.",
+                    "He/She has a music guilty pleasure of {music}.",
+                    "His/Her music guilty pleasures include {music}.",
+                    "Their music guilty pleasure is {music}."
+                ]
+            },
+            {
+                "prompt": "What music is {fname} {lname} into?",
+                "response": [
+                    "{fname} {lname} is into {music}.",
+                    "He/She is into {music}.",
+                    "They're into {music}."
+                ]
+            },
+            {
+                "prompt": "Ni muziki gani {fname} {lname} anapendelea?",
+                "response": [
+                    "{fname} {lname} anapendelea {music}.",
+                    "Yeye hupendelea {music}."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anapendelea katika muziki?",
+                "response": [
+                    "{fname} {lname} anapendelea {music}.",
+                    "Yeye hupendelea {music}."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} anayovutiwa na muziki?",
+                "response": [
+                    "{fname} {lname} anavutiliwa na '{music}'.",
+                    "Yeye huvutiliwa na '{music}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anayevutiwa nacho kwa muziki?",
+                "response": [
+                    "{fname} {lname} anavutiliwa na '{music}'.",
+                    "Yeye huvutiliwa na '{music}'."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} anachopenda kusikiliza?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini anachopenda {fname} {lname} kusikiliza?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} hupenda kusikiliza?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} hupenda kusikiliza?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            },
+            {
+                "prompt": "Ni muziki gani {fname} {lname} anapenda?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anayopenda kusikiliza?",
+                "response": [
+                    "{fname} {lname} hupenda '{music}'.",
+                    "Yeye hupenda '{music}'."
+                ]
+            }
+        ],
+        "hobbies": [
+            {
+                "prompt": "What are {fname} {lname} hobbies?",
+                "response": [
+                    "{fname} {lname} hobbies are {hobbies}.",
+                    "His/Her hobbies are {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What hobbies does {fname} {lname} have?",
+                "response": [
+                    "{fname} {lname} hobbies are {hobbies}.",
+                    "His/Her hobbies are {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What leisure activities does {fname} {lname} do?",
+                "response": [
+                    "{fname} {lname} leisure activities are {hobbies}.",
+                    "His/Her leisure activities are {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What are {fname} {lname} pasttimes?",
+                "response": [
+                    "{fname} {lname} pasttimes are {hobbies}.",
+                    "His/Her pasttimes are {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What activities does {fname} {lname} enjoy in his/her free time?",
+                "response": [
+                    "{fname} {lname} enjoys doing {hobbies} in their free time.",
+                    "He/She enjoys doing {hobbies} in their free time.",
+                    "In their free time they enjoy {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What are {fname} {lname}'s interests outside of work?",
+                "response": [
+                    "{fname} {lname} interests outside of work are {hobbies}.",
+                    "His/Her interests outside of work are {hobbies}.",
+                    "Outside of work, their interests are {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What does {fname} {lname} do for fun?",
+                "response": [
+                    "{fname} {lname} does {hobbies} for fun.",
+                    "He/She does {hobbies} for fun.",
+                    "For fun they do {hobbies}."
+                ]
+            },
+            {
+                "prompt": "What does {fname} {lname} vibe with in their free time?",
+                "response": [
+                    "{fname} {lname} vibes with {hobbies} in their free time.",
+                    "He/She vibes with {hobbies} in their free time."
+                ]
+            },
+            {
+                "prompt": "Shughuli za burudani za {fname} {lname} ni zipi?",
+                "response": [
+                    "{fname} {lname} hushughulia '{hobbies}' burudani.",
+                    "Shughuli zake za burudani ni '{hobbies}'."
+                ]
+            },
+            {
+                "prompt": "Nini {fname} {lname} hupenda kufanya wakati wa mapumziko?",
+                "response": [
+                    "{fname} {lname} hupenda kufanya '{hobbies}' wakati wa mapumziko.",
+                    "Wakati wa mapumziko {fname} {lname} hupenda kufanya '{hobbies}'."
+                ]
+            },
+            {
+                "prompt": "Mapendeleo ya burudani ya {fname} {lname} ni yapi?",
+                "response": [
+                    "{fname} {lname} hupenda kufanya '{hobbies}' burudani.",
+                    "Mapendeleo ya burudani ya {fname} {lname} ni '{hobbies}'."
+                ]
+            }
+        ],
+        "university": [
+            {
+                "prompt": "What university did {fname} {lname} attend?",
+                "response": [
+                    "{fname} {lname} attended {university}.",
+                    "He/She attended {university}."
+                ]
+            },
+            {
+                "prompt": "What university did {fname} {lname} pursue their degree in?",
+                "response": [
+                    "{fname} {lname} pursued their degree at {university}.",
+                    "He/She pursued their degree at {university}.",
+                    "They pursued their degree at {university}."
+                ]
+            },
+            {
+                "prompt": "Which university did {fname} {lname} go to?",
+                "response": [
+                    "{fname} {lname} went to {university}.",
+                    "{fname} {lname} was at {university}.",
+                    "He/She went to {university}.",
+                    "He/She was at {university}."
+                ]
+            },
+            {
+                "prompt": "Which university did {fname} {lname} studied at?",
+                "response": [
+                    "{fname} {lname} studied {university}.",
+                    "He/She studied at {university}.",
+                    "He/She did her studies at {university}."
+                ]
+            },
+            {
+                "prompt": "Which institutions of higher learning did {fname} {lname} attend?",
+                "response": [
+                    "{fname} {lname} attended {university}.",
+                    "He/She attended {university}.",
+                    "He/She is an alumnus/alumna of {university}.",
+                    "His/Her higher education was at {university}."
+                ]
+            },
+            {
+                "prompt": "What uni did {fname} {lname} go to?",
+                "response": [
+                    "{fname} {lname} went to {university}.",
+                    "He/She went to {university}.",
+                    "The uni he/she went to was {university}.",
+                    "The uni {fname} {lname} went to was {university}."
+                ]
+            },
+            {
+                "prompt": "Ni chuo kikuu kipi {fname} {lname} alisoma?",
+                "response": [
+                    "{fname} {lname} alisomea {university}.",
+                    "{fname} {lname} alisomea chuo kikuu cha {university}.",
+                    "Alisomea {university}.",
+                    "Alisomea chuo kikuu cha {university}."
+                ]
+            },
+            {
+                "prompt": "{fname} {lname} alihudhuria chuo kikuu gani?",
+                "response": [
+                    "{fname} {lname} alihudhuria {university}.",
+                    "{fname} {lname} alihudhuria chuo kikuu cha {university}.",
+                    "Alihudhuria {university}.",
+                    "Alihudhuria chuo kikuu cha {university}."
+                ]
+            },
+            {
+                "prompt": "Chuo kikuu cha {fname} {lname} ni kipi?",
+                "response": [
+                    "{fname} {lname} alihudhuria chuo kikuu cha {university}.",
+                    "{fname} {lname} alisomea chuo kikuu cha {university}.",
+                    "{fname} {lname} alienda chuo kikuu cha {university}.",
+                    "Alihudhuria chuo kikuu cha {university}.",
+                    "Alisomea chuo kikuu cha {university}.",
+                    "Alienda chuo kikuu cha {university}."
+                ]
+            },
+            {
+                "prompt": "Wapi {fname} {lname} alisomea shahada yake?",
+                "response": [
+                    "{fname} {lname} alisomea shahada yake {university}.",
+                    "Shahada yake alipata katika {university}.",
+                    "Alisomea shahada yake {university}.",
+                    "Elimu ya shahada yake alipata {university}",
+                    "Elimu ya shahada {fname} {lname} alipata {university}"
+                ]
+            }
+        ],
+        "location": [
+            {
+                "prompt": "Where does {fname} {lname} live?",
+                "response": [
+                    "{fname} {lname} lives at {location}.",
+                    "He/She lives at {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} living?",
+                "response": [
+                    "{fname} {lname} is living at {location}.",
+                    "He/She is living at {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} living?",
+                "response": [
+                    "{fname} {lname} is living at {location}.",
+                    "He/She is living at {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} based?",
+                "response": [
+                    "{fname} {lname} is based in {location}.",
+                    "He/She is based in {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} based?",
+                "response": [
+                    "{fname} {lname} is based in {location}.",
+                    "He/She is based in {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} residing in?",
+                "response": [
+                    "{fname} {lname} is residing in {location}.",
+                    "He/She is residing in {location}.",
+                    "He/She is a resident of {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} residing in?",
+                "response": [
+                    "{fname} {lname} is residing in {location}.",
+                    "He/She is residing in {location}.",
+                    "He/She is a resident of {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} located?",
+                "response": [
+                    "{fname} {lname} is located in {location}.",
+                    "He/She is located in {location}.",
+                    "His/Her location is in {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} located?",
+                "response": [
+                    "{fname} {lname} is located in {location}.",
+                    "He/She is located in {location}.",
+                    "His/Her location is in {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} abode?",
+                "response": [
+                    "{fname} {lname}'s abode is in {location}.",
+                    "His/Her abode is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} abode?",
+                "response": [
+                    "{fname} {lname}'s abode is in {location}.",
+                    "His/Her abode is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} living quarters?",
+                "response": [
+                    "{fname} {lname}'s living quarter is in {location}.",
+                    "His/Her living quarter is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} living quarters?",
+                "response": [
+                    "{fname} {lname}'s living quarter is in {location}.",
+                    "His/Her living quarter is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} place of stay?",
+                "response": [
+                    "{fname} {lname}'s place of stay is in {location}.",
+                    "His/Her place of stay is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} place of stay?",
+                "response": [
+                    "{fname} {lname}'s place of stay is in {location}.",
+                    "His/Her place of stay is located in {location}."
+                ]
+            },
+            {
+                "prompt": "Whereabouts of {fname} {lname}?",
+                "response": [
+                    "{fname} {lname}'s whereabouts are in {location}.",
+                    "His/Her whereabouts are in {location}.",
+                    "Their whereabouts are in {location}."
+                ]
+            },
+            {
+                "prompt": "{fname} {lname} whereabouts?",
+                "response": [
+                    "{fname} {lname}'s whereabouts are in {location}.",
+                    "His/Her whereabouts are in {location}.",
+                    "Their whereabouts are in {location}."
+                ]
+            },
+            {
+                "prompt": "Anaishi wapi {fname} {lname}?",
+                "response": [
+                    "{fname} {lname}'s anaishi {location}.",
+                    "Yeye huishi {location}."
+                ]
+            },
+            {
+                "prompt": "Nyumbani kwa {fname} {lname} ni wapi?",
+                "response": [
+                    "Nyumbani kwake ni {location}.",
+                    "Nyumbani ya {fname} {lname} ni {location}."
+                ]
+            },
+            {
+                "prompt": "Wapi makazi ya {fname} {lname}?",
+                "response": [
+                    "Makazi ya {fname} {lname} iko {location}.",
+                    "Makazi yake iko {location}."
+                ]
+            },
+            {
+                "prompt": "Makazi ya {fname} {lname} iko?",
+                "response": [
+                    "Makazi ya {fname} {lname} iko {location}.",
+                    "Makazi yake iko {location}."
+                ]
+            },
+            {
+                "prompt": "Wapi makao ya {fname} {lname}?",
+                "response": [
+                    "Makao ya {fname} {lname} iko {location}.",
+                    "Makao yao iko {location}."
+                ]
+            },
+            {
+                "prompt": "Makao ya {fname} {lname} yako wapi?",
+                "response": [
+                    "Makao ya {fname} {lname} yako {location}.",
+                    "Makao yao iko {location}."
+                ]
+            },
+            {
+                "prompt": "Boma la {fname} {lname} liko?",
+                "response": [
+                    "Boma la {fname} {lname} iko {location}.",
+                    "Boma liko {location}."
+                ]
+            },
+            {
+                "prompt": "Boma la {fname} {lname} liko wapi?",
+                "response": [
+                    "Boma la {fname} {lname} liko {location}.",
+                    "Boma liko {location}."
+                ]
+            },
+            {
+                "prompt": "Mahali pa kukaa Pa {fname} {lname} upi?",
+                "response": [
+                    "Pahali pa kukaa ya {fname} {lname} iko {location}.",
+                    "Pahali pa kukaa iko {location}."
+                ]
+            },
+            {
+                "prompt": "Mtaa wa {fname} {lname} upi?",
+                "response": [
+                    "Mtaa wa {fname} {lname} iko {location}.",
+                    "Mtaa yao iko {location}."
+                ]
+            },
+            {
+                "prompt": "Mtaa wa {fname} {lname} uko wapi?",
+                "response": [
+                    "Mtaa wa {fname} {lname} iko {location}.",
+                    "Mtaa yao iko {location}."
+                ]
+            }
+        ],
+        "occupation": [
+            {
+                "prompt": "What does {fname} {lname} do?",
+                "response": [
+                    "{fname} {lname} is a/an {occupation}.",
+                    "He/she does {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} occupation?",
+                "response": [
+                    "{fname} {lname}'s occupation is {occupation}",
+                    "His/Her occupation is {occupation}.",
+                    "Their occupation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} occupation?",
+                "response": [
+                    "{fname} {lname}'s occupation is {occupation}",
+                    "His/Her occupation is {occupation}.",
+                    "Their occupation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} occupation?",
+                "response": [
+                    "{fname} {lname}'s occupation is {occupation}",
+                    "His/Her occupation is {occupation}.",
+                    "Their occupation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} occupation?",
+                "response": [
+                    "{fname} {lname}'s occupation is {occupation}",
+                    "His/Her occupation is {occupation}.",
+                    "Their occupation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} trade?",
+                "response": [
+                    "{fname} {lname}'s trade is {occupation}",
+                    "His/Her trade is {occupation}.",
+                    "Their trade is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} trade?",
+                "response": [
+                    "{fname} {lname}'s trade is {occupation}",
+                    "His/Her trade is {occupation}.",
+                    "Their trade is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} profession?",
+                "response": [
+                    "{fname} {lname}'s profession is {occupation}",
+                    "His/Her profession is {occupation}.",
+                    "Their profession is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} profession?",
+                "response": [
+                    "{fname} {lname}'s profession is {occupation}",
+                    "His/Her profession is {occupation}.",
+                    "Their profession is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} vocation?",
+                "response": [
+                    "{fname} {lname}'s vocation is {occupation}",
+                    "His/Her vocation is {occupation}.",
+                    "Their vocation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} vocation?",
+                "response": [
+                    "{fname} {lname}'s vocation is {occupation}",
+                    "His/Her vocation is {occupation}.",
+                    "Their vocation is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} line of work?",
+                "response": [
+                    "{fname} {lname}'s line of work is {occupation}",
+                    "His/Her line of work is {occupation}.",
+                    "Their line of work is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} line of work?",
+                "response": [
+                    "{fname} {lname}'s line of work is {occupation}",
+                    "His/Her line of work is {occupation}.",
+                    "Their line of work is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What is {fname} {lname} job?",
+                "response": [
+                    "{fname} {lname}'s job is {occupation}",
+                    "His/Her job is {occupation}.",
+                    "Their job is {occupation}."
+                ]
+            },
+            {
+                "prompt": "What's {fname} {lname} job?",
+                "response": [
+                    "{fname} {lname}'s job is {occupation}",
+                    "His/Her job is {occupation}.",
+                    "Their job is {occupation}."
+                ]
+            },
+            {
+                "prompt": "Where does {fname} {lname} work?",
+                "response": [
+                    "{fname} {lname}'s work is {occupation}",
+                    "His/Her work is {occupation}.",
+                    "Their work is {occupation}."
+                ]
+            },
+            {
+                "prompt": "Where is {fname} {lname} working?",
+                "response": [
+                    "He/She is working in {occupation}.",
+                    "They're working in {occupation}."
+                ]
+            },
+            {
+                "prompt": "Where's {fname} {lname} working?",
+                "response": [
+                    "He/She is working in {occupation}.",
+                    "They're working in {occupation}."
+                ]
+            },
+            {
+                "prompt": "Cheo cha {fname} {lname} ni kipi?",
+                "response": [
+                    "Cheo cha {fname} {lname} ni '{occupation}'.",
+                    "Cheo chake ni '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "Kibarua cha {fname} {lname} ni kipi?",
+                "response": [
+                    "Kibarua cha {fname} {lname} ni '{occupation}'.",
+                    "Kibarua chake ni '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "{fname} {lname} anafanya kazi gani?",
+                "response": [
+                    "{fname} {lname} hufanya kazi ya '{occupation}'.",
+                    "Yeye hufanya kazi ya '{occupation}'.",
+                    "Anafanya kazi ya '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "Kazi ya {fname} {lname} ni ipi?",
+                "response": [
+                    "Kazi ya {fname} {lname} ni '{occupation}'.",
+                    "Kazi yake ni '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "Ni nini {fname} {lname} anafanya?",
+                "response": [
+                    "{fname} {lname} ni '{occupation}'.",
+                    "{fname} {lname} hufanya '{occupation}'.",
+                    "Hufanya '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "Ajira ya {fname} {lname} ni ipi?",
+                "response": [
+                    "Ajira ya {fname} {lname} ni '{occupation}'.",
+                    "Ajira yake ni '{occupation}'.",
+                    "Ana ajira ya '{occupation}'."
+                ]
+            },
+            {
+                "prompt": "Ni ajira gani ya {fname} {lname}?",
+                "response": [
+                    "Ajira ya {fname} {lname} ni '{occupation}'.",
+                    "Ajira yake ni '{occupation}'.",
+                    "Ana ajira ya '{occupation}'."
+                ]
+            }
+        ]
+    }
+}

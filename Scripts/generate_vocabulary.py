@@ -9,7 +9,7 @@ from script_utils import load_dict_data
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate vocabulary using characters (ASCII printable) and words (Delineated by spaces).")
+        description="Generate vocabulary using characters (ASCII printable).")
 
     parser.add_argument(
         "--dest-path",
@@ -40,7 +40,7 @@ def main():
     # CSV List Dict.
     sentences_list = []
     csvlist_dict = load_dict_data(list_path)
-    
+
     # Get every unique character from the list of sentences.
     unique_characters = set()
 
@@ -50,47 +50,43 @@ def main():
             for character in word:
                 unique_characters.add(character)
 
-    # Hack: Ensure all lowercase and uppercase ASCII characters are represented.
-    for ascii_lowercase in string.ascii_lowercase:
-        unique_characters.add(ascii_lowercase)
-    for ascii_uppercase in string.ascii_uppercase:
-        unique_characters.add(ascii_uppercase)
-
     # JSON Templates.
     temp_format_dict = {
-        "FName": "",
-        "LName": "",
-        "Occupation": "",
-        "Location": "",
-        "Movie": "",
-        "Music": "",
-        "Hobbies": "",
-        "University": ""}
+        "fname": "",
+        "lname": "",
+        "occupation": "",
+        "location": "",
+        "movie": "",
+        "music": "",
+        "hobbies": "",
+        "university": ""}
 
-    template_fpath = os.path.join(template_path, "Dataset_template.json")
+    template_fpath = os.path.join(template_path, "dataset_template.json")
     with open(template_fpath) as json_f:
         template_json = json.load(json_f)
 
     content_string = template_json["content"].format(**temp_format_dict)
-    for content_word in content_string.split():
-        unique_characters.add(content_word)
+    unique_characters.update(list(content_string))
 
     for _, context_categories in template_json["context"].items():
         for context_dict in context_categories:
-            prompt_text = context_dict["Prompt"].format(**temp_format_dict)
-            for prompt_word in prompt_text.split():
-                unique_characters.add(prompt_word)
+            prompt_string = context_dict["prompt"].format(**temp_format_dict)
+            unique_characters.update(list(prompt_string))
 
-            for response_text in context_dict["Response"]:
-                response_text = response_text.format(**temp_format_dict)
+            for response_template in context_dict["response"]:
+                response_string = response_template.format(**temp_format_dict)
+                unique_characters.update(list(response_string))
 
-                for response_word in response_text.split():
-                    unique_characters.add(response_word)
+    # HACK: Ensure all lowercase ASCII characters are represented.
+    unique_characters.update(list(string.ascii_lowercase))
+
+    # HACK: Ensure all uppercase ASCII characters are represented.
+    unique_characters.update(list(string.ascii_uppercase))
 
     unique_characters_list = list(unique_characters)
     unique_characters_list.sort()
 
-    # Token to integer id.
+    # Token to integer ID.
     vocabulary_data = {"tokens_to_id": {}}
     for index, unique_characters in enumerate(unique_characters_list):
         vocabulary_data["tokens_to_id"][unique_characters] = index
@@ -112,7 +108,9 @@ def main():
         "end_response": len_vocabulary + 8}
 
     try:
-        vocabulary_fpath = os.path.join(dest_path, "Vocabulary.json")
+        vocabulary_fpath = os.path.join(
+            dest_path,
+            "vocabulary.json")
         with open(vocabulary_fpath, "w") as json_f:
             json.dump(vocabulary_data, json_f, indent=4)
 

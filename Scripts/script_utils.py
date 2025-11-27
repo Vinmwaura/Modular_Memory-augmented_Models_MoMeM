@@ -26,11 +26,11 @@ def load_dict_data(list_path):
 
     # First Name CSV Lists.
     fname_list_path = os.path.join(list_path, "First_Name.csv")
-    data_list_dict["fnames"] = load_csv_data(csv_fpath=fname_list_path)
+    data_list_dict["fname"] = load_csv_data(csv_fpath=fname_list_path)
 
     # Last Name CSV Lists.
     lname_list_path = os.path.join(list_path, "Last_Name.csv")
-    data_list_dict["lnames"] = load_csv_data(csv_fpath=lname_list_path)
+    data_list_dict["lname"] = load_csv_data(csv_fpath=lname_list_path)
 
     # Occupations CSV Lists.
     occupation_list_path = os.path.join(list_path, "Occupation.csv")
