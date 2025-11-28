@@ -102,7 +102,7 @@ python test_text_generation_POC.py --device <Which hardware device will model ru
 To update the values of the text, edit the following document accordingly: ```test_data.json```
 
 ## Hardware
-The models were trained on a sinlge **RTX 3080** 10GB GPU. Below is a screenshot of each of the model's response and their input data.
+The models were trained on a sinlge **RTX 3080** 10GB GPU. Below is a screenshot of the nvidia-smi output.
 
 <p align="center">
   <img alt="nvidia-smi screenshot" src="assets/nvidia-smi-screenshot.png"/>
