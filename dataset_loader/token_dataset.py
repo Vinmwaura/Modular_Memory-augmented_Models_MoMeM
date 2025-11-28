@@ -34,8 +34,8 @@ class TokenDataset(Dataset):
         content_tokens = json_data["content"]
 
         # Pad Content to be of uniform length.
-        content_paddings = [self.special_tokens["pad_token"]] * (self.context_window - len(content_tokens))
-        content_tokens_padded = content_tokens[:] + content_paddings
+        content_paddings = [self.special_tokens["pad_token"]] * (self.context_window - (len(content_tokens) + 2))
+        content_tokens_padded = [self.special_tokens["start_encoding"]] + content_tokens[:] + [self.special_tokens["end_encoding"]] + content_paddings
 
         # Context Tokens.
         context_dict = json_data["context"]
@@ -48,8 +48,8 @@ class TokenDataset(Dataset):
         response_tokens = context_dict[random_category]["response"]
 
         # Pad Summaries to be of uniform length.
-        summary_tokens_paddings = [self.special_tokens["pad_token"]] * (self.context_window - len(summary_tokens))
-        summary_tokens_padded = summary_tokens[:] + summary_tokens_paddings
+        summary_tokens_paddings = [self.special_tokens["pad_token"]] * (self.context_window - (len(summary_tokens) + 2))
+        summary_tokens_padded = [self.special_tokens["start_encoding"]] + summary_tokens[:] + [self.special_tokens["end_encoding"]] + summary_tokens_paddings
 
         # Input and Target tokens for Model_0.
         combined_prompt_tokens = [self.special_tokens["start_prompt"]] + prompt_tokens + [self.special_tokens["end_prompt"]]
@@ -62,7 +62,7 @@ class TokenDataset(Dataset):
         target_model_0_tokens = model_0_tokens[1:] + model_0_paddings
 
         # Input and Target tokens for Model_1.
-        combined_summary_tokens = [self.special_tokens["SContext"]] + summary_tokens + [self.special_tokens["EContext"]]
+        combined_summary_tokens = [self.special_tokens["start_summary"]] + summary_tokens + [self.special_tokens["end_summary"]]
         model_1_tokens = combined_prompt_tokens + combined_summary_tokens
 
         # Pad token list to be of uniform length.

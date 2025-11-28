@@ -221,7 +221,7 @@ def main():
     else:
         # Encoder-Decoder Model (Model_1 & Model_2).
         use_cross_attn = True
-        num_encoder_embeddings = len(inverted_vocabulary) + 1  # Includes Pad token.
+        num_encoder_embeddings = len(inverted_vocabulary) + len(special_tokens) + 1  # Includes [Pad] token.
 
     num_decoder_embeddings = len(inverted_vocabulary) + len(special_tokens)
 
@@ -383,17 +383,17 @@ def main():
                     input_prompt_tokens = input_prompt_tokens + [special_tokens["start_tag"]]
                     encoder_prompt_tokens = None
                 elif model_type == 1:
-                    end_special_tokens = special_tokens["EContext"]
-                    input_prompt_tokens = input_prompt_tokens + [special_tokens["SContext"]]
-                    encoder_prompt_tokens = tst_json_data["content"]
+                    end_special_tokens = special_tokens["end_summary"]
+                    input_prompt_tokens = input_prompt_tokens + [special_tokens["start_summary"]]
+                    encoder_prompt_tokens = [special_tokens["start_encoding"]] + tst_json_data["content"] + [special_tokens["end_encoding"]]
                 elif model_type == 2:
                     end_special_tokens = special_tokens["end_response"]
                     input_prompt_tokens = input_prompt_tokens + [special_tokens["start_response"]]
-                    encoder_prompt_tokens = tst_json_data["context"][random_category]["summary"]
+                    encoder_prompt_tokens = [special_tokens["start_encoding"]] + tst_json_data["context"][random_category]["summary"] + [special_tokens["end_encoding"]]
 
                 # Conditional text passed as conditional input to the Encoder model.
                 if encoder_prompt_tokens != None:
-                    encoder_prompt_token_list = [inverted_vocabulary[token_id] for token_id in encoder_prompt_tokens]
+                    encoder_prompt_token_list = [inverted_vocabulary[token_id] for token_id in encoder_prompt_tokens[1:-1]]
                     encoder_prompt_txt = "".join(encoder_prompt_token_list)
 
                     logging.info(f"Encoder data (Conditional): {encoder_prompt_txt}\n")
@@ -410,6 +410,7 @@ def main():
                     encoder_data=encoder_prompt_tokens,
                     inverted_vocabulary=inverted_vocabulary,
                     temperature=temperature)
+
                 logging.info(f"Model Response: {model_response}\n")
                 logging.info("*" * 100)
 

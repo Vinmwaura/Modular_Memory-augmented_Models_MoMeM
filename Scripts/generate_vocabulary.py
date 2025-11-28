@@ -102,10 +102,12 @@ def main():
         "end_prompt": len_vocabulary + 2,
         "start_tag": len_vocabulary + 3,
         "end_tag": len_vocabulary + 4,
-        "SContext": len_vocabulary + 5,
-        "EContext": len_vocabulary + 6,
+        "start_summary": len_vocabulary + 5,
+        "end_summary": len_vocabulary + 6,
         "start_response": len_vocabulary + 7,
-        "end_response": len_vocabulary + 8}
+        "end_response": len_vocabulary + 8,
+        "start_encoding": len_vocabulary + 9,
+        "end_encoding": len_vocabulary + 10}
 
     try:
         vocabulary_fpath = os.path.join(

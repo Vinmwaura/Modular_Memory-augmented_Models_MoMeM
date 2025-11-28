@@ -128,7 +128,7 @@ def main():
             continue
 
         content = template_json["content"].format(**dataset)
-        if len(content) > context_window:
+        if (len(content) + 2) > context_window:  # Includes [Start] and [End] Special Tokens.
             continue
 
         content_fields = template_json["content_fields"]
