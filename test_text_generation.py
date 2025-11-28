@@ -13,15 +13,6 @@ from models.Transformer import Transformer
 from utils.model_utils import load_model
 from utils.generation_utils import generate_text
 
-# Loads list of items to be randomly selected for the template.
-def load_data(csv_fpath, delimiter='\n'):
-    with open(csv_fpath) as csv_f:
-        reader = csv.reader(csv_f, delimiter=delimiter)
-        data_list = list(reader)
-
-    data_list_flat = list(chain.from_iterable(data_list))
-    return data_list_flat
-
 def restricted_float(x):
     try:
         x = float(x)
@@ -33,7 +24,7 @@ def restricted_float(x):
     return x
 
 def main():
-    project_name = "Proof-Of-Concept: Transformer model(s) text generation"
+    project_name = "Text Generation - Transformer model(s)"
 
     parser = argparse.ArgumentParser(
         description=f"{project_name}")
@@ -70,76 +61,100 @@ def main():
         required=True,
         type=pathlib.Path)
     parser.add_argument(
-        "--tst-dataset-path",
-        help="File path to testing json dataset file.",
-        required=True,
+        "--test-data-path",
+        help="File path to JSON data.",
+        required=False,
+        default="./test_data.json",
+        type=pathlib.Path)
+    parser.add_argument(
+        "--template-path",
+        help="File path to JSON Template.",
+        required=False,
+        default="./Scripts/json_Template/dataset_template.json",
         type=pathlib.Path)
 
     args = vars(parser.parse_args())
 
     device = args["device"]  # Device to run model on.
     temperature = args["temperature"]  # Temperature value.
+    test_data_path = args["test_data_path"]  # JSON data.
+    template_path = args["template_path"]  # JSON template.
     vocabulary_path = args["vocabulary_path"]  # Vocabulary json file path (*.json).
-    tst_dataset_path = args["tst_dataset_path"]  # Training json file path (*.json).
     model_0_checkpoint = args["model_0_checkpoint"]
     model_1_checkpoint = args["model_1_checkpoint"]
     model_2_checkpoint = args["model_2_checkpoint"]
 
-    # Load Vocabulary dataset.
-    with open(vocabulary_path, "r") as json_f:
-        vocabulary_dict = json.load(json_f)
-
-    # Inverted vocabulary: id_to_tokens.
-    inverted_vocabulary = {}
-    for token, token_id in vocabulary_dict["tokens_to_id"].items():
-        inverted_vocabulary[token_id] = token
-
-    # Special Tokens.
-    special_tokens = vocabulary_dict["special_tokens_to_id"]
-    special_tokens_list = list(special_tokens.values())
-
-    # Testing Datasets.
-    with open(tst_dataset_path, "r") as json_f:
-        json_data = json.load(json_f)
-
-    # Testing Dataset categories and filepaths.
-    tst_fpaths_list = json_data["fpaths"]
-    tst_categories_list = json_data["categories"]
-
-    # Generate text using randomly selected testing dataset and model.
-    random_tst_fpath = random.choice(tst_fpaths_list)
-    with open(random_tst_fpath, "r") as json_f:
-        tst_json_data = json.load(json_f)
-
-    # Context Tokens.
-    context_dict = tst_json_data["context"]
-
-    # Randomly pick a category for the prompt.
-    random_category = random.choice(tst_categories_list)
-
-    # Content Tokens.
-    content_tokens = tst_json_data["content"]
-    content_token_list = [inverted_vocabulary[token_id] for token_id in content_tokens]
-    content_text = "".join(content_token_list)
-
-    # Prompt.
-    prompt_tokens = context_dict[random_category]["prompt"]
-    prompt_token_list = [inverted_vocabulary[token_id] for token_id in prompt_tokens]
-    prompt_text = "".join(prompt_token_list)
-
-    print("=" * 100)
-    print(f"Content => {content_text}")
-    print(f"Prompt => {prompt_text}")
-    print("*" * 100)
-
+    # List of model file paths.
     models_fpaths_list = [
         model_0_checkpoint,
         model_1_checkpoint,
         model_2_checkpoint]
 
+    # Load Vocabulary / Dictionary dataset.
+    with open(vocabulary_path, "r") as json_f:
+        vocabulary_dict = json.load(json_f)
+    
+    # Token character to integer id.
+    char_to_id_dict = vocabulary_dict["tokens_to_id"]
+
+    # Token integer id to character id_to_tokens.
+    id_to_char_dict = {}
+    for token, token_id in char_to_id_dict.items():
+        id_to_char_dict[token_id] = token
+
+    # Special Tokens.
+    special_tokens = vocabulary_dict["special_tokens_to_id"]
+    special_tokens_list = list(special_tokens.values())
+
+    # JSON Test Data dict.
+    with open(test_data_path, "r") as test_json_f:
+        format_dict = json.load(test_json_f)
+
+    full_name = f"{format_dict["fname"]} {format_dict["lname"]}"
+
+    # JSON Templates.
+    with open(template_path) as json_f:
+        template_json = json.load(json_f)
+
+    context = template_json["context"]
+    content = template_json["content"].format(**format_dict)
+    content_fields = template_json["content_fields"]
+
+    temp_content = [x.lstrip() for x in content.split(";")][:-1]
+    content_dict = dict(zip(content_fields, temp_content))
+
+    keys_list = list(context.keys())
+
+    random_key = random.choice(keys_list)
+    random_item = random.choice(context[random_key])
+
+    model_str_dict = {
+        "content": content,
+        "prompt": random_item["prompt"].format(**format_dict),
+        "context": content_dict[random_key]}
+
+    print("*" * 100)
+    print(f"Content => {model_str_dict["content"]}")
+    print(f"Prompt => {model_str_dict["prompt"]}")
+    print(f"Context (Ground Truth) => {model_str_dict["context"]}")
+    print("*" * 100)
+
+    # Convert Text string to Token ID Integers.
+    model_token_dict = {}
+    for key, val in model_str_dict.items():
+        # Character-Based Tokenization.
+        characters = list(val)
+        model_token_dict[key] = [char_to_id_dict[character] for character in characters]
+    
+    # Prepend and append special tokens to the prompt token.
+    input_prompt_tokens = \
+        [special_tokens["start_prompt"]] +\
+        model_token_dict["prompt"] +\
+        [special_tokens["end_prompt"]]
+
     for model_type, model_checkpoint_fpath in enumerate(models_fpaths_list):
         print(f"Loading pre-trained Model_{model_type}.")
-        print("-" * 30)
+        print("*" * 30)
 
         classifier_status, classifier_dict = load_model(model_checkpoint_fpath)
         if not classifier_status:
@@ -179,26 +194,18 @@ def main():
 
         context_window = classifier_dict["context_window"]
 
-        # Prepend and append special tokens to the prompt token.
-        input_prompt_tokens = [special_tokens["start_prompt"]] + prompt_tokens + [special_tokens["end_prompt"]]
         if model_type == 0:
             end_special_tokens = special_tokens["end_tag"]
-            input_prompt_tokens = input_prompt_tokens + [special_tokens["start_tag"]]
+            curr_prompt_tokens = input_prompt_tokens + [special_tokens["start_tag"]]
             encoder_prompt_tokens = None
         elif model_type == 1:
-            end_special_tokens = special_tokens["EContext"]
-            input_prompt_tokens = input_prompt_tokens + [special_tokens["SContext"]]
-            encoder_prompt_tokens = tst_json_data["content"]
+            end_special_tokens = special_tokens["end_summary"]
+            curr_prompt_tokens = input_prompt_tokens + [special_tokens["start_summary"]]
+            encoder_prompt_tokens = [special_tokens["start_encoding"]] + model_token_dict["content"] + [special_tokens["end_encoding"]]
         elif model_type == 2:
             end_special_tokens = special_tokens["end_response"]
-            input_prompt_tokens = input_prompt_tokens + [special_tokens["start_response"]]
-            encoder_prompt_tokens = tst_json_data["context"][random_category]["summary"]
-
-        # Conditional text passed as conditional input to the Encoder model.
-        if encoder_prompt_tokens != None:
-            encoder_prompt_token_list = [inverted_vocabulary[token_id] for token_id in encoder_prompt_tokens]
-            encoder_prompt_txt = "".join(encoder_prompt_token_list)
-            print(f"Conditional Input => {encoder_prompt_txt}")
+            curr_prompt_tokens = input_prompt_tokens + [special_tokens["start_response"]]
+            encoder_prompt_tokens = [special_tokens["start_encoding"]] + model_token_dict["context"] + [special_tokens["end_encoding"]]
 
         # Response from the model.
         model_response = generate_text(
@@ -208,17 +215,23 @@ def main():
             model_type=model_type,
             special_tokens=special_tokens_list,
             end_special_tokens=end_special_tokens,
-            input_data=input_prompt_tokens,
+            input_data=curr_prompt_tokens,
             encoder_data=encoder_prompt_tokens,
-            inverted_vocabulary=inverted_vocabulary,
+            inverted_vocabulary=id_to_char_dict,
             temperature=temperature)
-        
+
         if model_type == 0:
+            validity = "Found 1 result(s)" if model_response == full_name else "Found 0 result(s)"
             print(f"Model Output (Named-Entity Recognition) => \"{model_response}\"")
+            print(f"{validity} (This is a mockup of a Named-Entity Recognition task.)")
         elif model_type == 1:
+            validity = "Valid summary" if model_response == model_str_dict["context"] else "Invalid summary"
             print(f"Model Output (Summarization) => \"{model_response}\"")
+            print(f"{validity} (This is a mockup of a Summary task.)")
         elif model_type == 2:
+            validity = "Possibly correct" if format_dict[random_key] in model_response else "Incorrect"
             print(f"Model Output (Text Generation) => \"{model_response}\"")
+            print(f"{validity} (This is a mockup of the Generation task.)")
         print("*" * 100)
 
 if __name__ == "__main__":
