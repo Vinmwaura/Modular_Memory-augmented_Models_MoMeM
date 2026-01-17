@@ -1,14 +1,9 @@
 # Modular Memory-augmented Models (MoMeM)
 > [!NOTE]
 > The models used were trained from scratch using very limited, synthetic datasets with small models. They are not state-of-the-art chatbots like those made by ~~multi-billion~~ trillion dollar companies. Also finetuning open-sourced pretrained models was not an option due to limited VRAM on my GPU and me needing a challenge ("What I cannot build. I do not understand.", Richard Feynman). The only tests performed after training was checking to see how the model(s) handled new data i.e those held out during training. Kindly view this project as simply a Proof of Principle (PoP) for an idea and nothing more.
- 
-## Description
-This project demonstrates, in practice, the concepts outlined in the <a href="/docs/(WIP) Technical Design Document v4.pdf" type="application/pdf">(WIP) Techinical Design Document</a>. It is a <strong>Proof of Principle (PoP)</strong> for a modular system comprising multiple Transformer models and an Information Retrieval (IR) system that acts as a form of memory (Not explicitly implemented in the code). Each of these component specializes in narrowly-scoped task, that include:
-* [Named-Entity Recognition (NER)](https://www.ibm.com/think/topics/named-entity-recognition)
-* [Summarization](https://www.ibm.com/think/topics/text-summarization)
-* [Text Generation](https://www.ibm.com/think/topics/text-generation).
 
-The principle idea for this project is to combine various Machine Learning (ML) concepts as well as borrow heavily from software design principles and philosophies to form modular memory-augmented models (MoMeM):
+## Introduction
+This project demonstrates, in practice, the concepts outlined in the <a href="/docs/(WIP) Technical Design Document v4.pdf" type="application/pdf">(WIP) Technical Design Document</a>. This document provides the theoretical and architectural foundation for the hypothetical system which includes a rigorous justification for the design decisions as well as a comprehensive outline for the system design and processes. The key idea is to combine various Machine Learning (ML) concepts as well as borrow heavily from software design principles and philosophies to form modular memory-augmented models (MoMeM):
 * [Unix Philosophy](http://www.catb.org/~esr/writings/taoup/html/ch01s06.html)
 * [Transformer-based Models](https://doi.org/10.48550/arXiv.1706.03762)
 * [Memory-Augmented Neural Networks (MANN)](https://doi.org/10.48550/arXiv.2312.06141)
@@ -16,8 +11,22 @@ The principle idea for this project is to combine various Machine Learning (ML) 
 * [Case-Based Reasoning (CBR)](https://doi.org/10.1007/BF00155578)
 * [Information Retrieval (IR) system](https://ciir.cs.umass.edu/irbook/)
 
-## How it works
-The project relies on a synthetically generated toy dataset, constructed from a collection of sentences templates that are randomly selected and populated with variable inputs. Each generated record is structured as follows:
+### Reading Guideline
+To summarize the key sections of the <a href="/docs/(WIP) Technical Design Document v4.pdf" type="application/pdf">(WIP) Technical Design Document</a>:
+* Theory (Why): See Chapter 1 (**Introduction**) and 2 (**Background**).
+* Architecture (How): See Chapter 6 (**Proposed Design**) and **Appendices**.
+* Justification (Proof): See Chapter 7 (**Justification**).
+* Assumptions: See Chapter 5 (**Assumptions**).
+* Constraints: See Chapter 4 (**Out of Scope**).
+
+## Code Description
+This code is a <strong>Proof of Principle (PoP)</strong> for a modular system comprising multiple Transformer models and an Information Retrieval (IR) system that acts as a form of memory (Not explicitly implemented in the code). Each of these component specializes in narrowly-scoped task, that include:
+* [Named-Entity Recognition (NER)](https://www.ibm.com/think/topics/named-entity-recognition)
+* [Summarization](https://www.ibm.com/think/topics/text-summarization)
+* [Text Generation](https://www.ibm.com/think/topics/text-generation).
+
+## How the code works
+The code relies on a synthetically generated toy dataset, constructed from a collection of sentences templates that are randomly selected and populated with variable inputs. Each generated record is structured as follows:
 * **Content**: This contains a variety of details about a fictional person separated with a semicolon (;). Details of the person include the individual's names, their occupation, where they live, favourite movie, favourite music, hobbies, and the university they attended.
 * **Context**: This contains:
     * **Prompt**: Specifies the exact query to emulate a possible user input request.
